@@ -170,12 +170,12 @@ EOF;
             '###publicUrl###' => htmlspecialchars($processedImage->getPublicUrl() ?? ''),
             '###alt###' => htmlspecialchars($this->file->getProperty('alternative') ?: $this->title),
             '###title###' => htmlspecialchars($this->file->getProperty('title') ?: $this->title),
-            '###width###' => htmlspecialchars((string)$processedImage->getProperty('width')),
-            '###height###' => htmlspecialchars((string)$processedImage->getProperty('height')),
+            '###width###' => $processedImage->getProperty('width'),
+            '###height###' => $processedImage->getProperty('height'),
         ];
         $this->imageTag = str_replace(array_keys($imageTagMarkers), array_values($imageTagMarkers), $this->imageTag);
         $markerArray = [
-            '###TITLE###' => htmlspecialchars($this->file->getProperty('title') ?: $this->title),
+            '###TITLE###' => $this->file->getProperty('title') ?: $this->title,
             '###IMAGE###' => $this->imageTag,
             '###BODY###' => $this->bodyTag,
         ];
